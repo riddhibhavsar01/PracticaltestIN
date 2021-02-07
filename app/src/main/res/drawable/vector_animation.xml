@@ -1,0 +1,85 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+       <!-- <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <path
+                android:name="border"
+                android:pathData="M 0 0 L 0 24 L 24 24 L 24 0 L 0 0"
+                android:strokeColor="#888888"
+                android:strokeWidth="2"/>
+            <path
+                android:name="check"
+                android:pathData="M 4 12 L 9 18 L 20 7"
+                android:strokeColor="#000000"
+                android:strokeWidth="2"
+                android:strokeLineCap="round"
+                android:strokeMiterLimit="5"/>
+        </vector>-->
+
+        <vector xmlns:android="http://schemas.android.com/apk/res/android"
+            android:width="200dp"
+            android:height="200dp"
+            android:viewportHeight="100"
+            android:viewportWidth="100">
+            <path
+                android:fillColor="@color/yellow"
+                android:pathData="M 50,50 m -48 ,0 a 48,48 0 1,0 96,0 a 48,48 0 1,0 -96,0"/>
+            <path
+                android:name="eye_left"
+                android:pathData="M 28,40 Q 36,50 43,40"
+                android:strokeColor="@color/colorBlack"
+                android:strokeLineCap="round"
+                android:strokeWidth="4"/>
+            <path
+                android:name="eye_right"
+                android:pathData="M 58,40 Q 66,50 73,40"
+                android:strokeColor="@color/colorBlack"
+                android:strokeLineCap="round"
+                android:strokeWidth="4"/>
+            <path
+                android:name="smile"
+                android:pathData="M 30,75 Q 50,55 70,75"
+                android:strokeColor="@color/colorBlack"
+                android:strokeLineCap="round"
+                android:strokeWidth="4"/>
+        </vector>
+    </aapt:attr>
+    <target android:name="eye_left">
+        <aapt:attr name="android:animation">
+            <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+                android:duration="1000"
+                android:interpolator="@android:anim/accelerate_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 28,40 Q 36,50 43,40"
+                android:valueTo="M 28,40 Q 36,30 43,40"
+                android:valueType="pathType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="eye_right">
+        <aapt:attr name="android:animation">
+            <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+                android:duration="1000"
+                android:interpolator="@android:anim/accelerate_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 58,40 Q 66,50 73,40"
+                android:valueTo="M 58,40 Q 66,30 73,40"
+                android:valueType="pathType"/>    </aapt:attr>
+    </target>
+    <target android:name="smile">
+        <aapt:attr name="android:animation">
+            <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+                android:duration="1000"
+                android:interpolator="@android:anim/accelerate_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 30,75 Q 50,55 70,75"
+                android:valueTo="M 30,65 Q 50,85 70,65"
+                android:valueType="pathType"/>
+        </aapt:attr>
+    </target>
+</animated-vector>

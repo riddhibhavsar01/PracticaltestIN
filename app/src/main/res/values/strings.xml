@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Practicaltest</string>
+
+    <string name="verify_your_number">Verify Your Number</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="phone_auth_subtitle">Please enter your phone number to verify your account</string>
+    <string name="otp_auth_subtitle">Please enter the OTP received in %1$s</string>
+    <string name="submit">Submit</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="verify">Verify</string>
+    <string name="otp">Otp</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_map">Map</string>
+
+
+    <string name="degree_celsius_symbol">°C</string>
+    <string name="description_weather_condition_icon">weather condition icon</string>
+    <string name="label_humidity">Humidity</string>
+    <string name="label_pressure">Pressure</string>
+    <string name="label_visibility">Visibility</string>
+    <string name="label_sunrise">Sunrise</string>
+    <string name="label_sunset">Sunset</string>
+
+    <!--for location start-->
+    <string name="fetching_location">Fetching location…</string>
+    <string name="without_location_you_cant_get_request">Location permission is required for use this application.
+    </string>
+    <!--for location end-->
+</resources>

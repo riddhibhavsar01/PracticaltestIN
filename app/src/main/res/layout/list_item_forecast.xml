@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import
+            alias="ExtensionFunctions"
+            type="com.example.practicaltest.utils.ExtensionsKt" />
+        <variable
+            name="forecast"
+            type="com.example.practicaltest.data.network.model.data_class.ForecastResponse.ForecastResponseListItem" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="17sp"
+            android:textStyle="bold"
+           android:text="@{ExtensionFunctions.unixTimestampToDateTimeString(forecast.date)}"
+            />
+        <TextView
+            android:id="@+id/tvTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@{`Temparature :`+ExtensionFunctions.kelvinToCelsius(forecast.main.temperature)+`°C`}"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/tvFeelsLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvTemp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@{`Feels Like :`+ExtensionFunctions.kelvinToCelsius(forecast.main.feelsLike)+`°C`}"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/tvHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@{`Humidity : `+forecast.main.humidity +`%`}"
+            android:textSize="14sp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

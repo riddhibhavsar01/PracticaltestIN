@@ -1,0 +1,139 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolVersion
+
+    defaultConfig {
+        applicationId "com.example.practicaltest"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        buildConfigField "String", "BASE_URL", "\"" + getBaseUrl() + "\""
+        buildConfigField "String", "APP_ID", "\"" + getAppId() + "\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    def room_version = "2.2.1"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.security:security-crypto:1.1.0-alpha03'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Kotlin
+    implementation deps.kotlin.kotlinSDK
+    implementation 'androidx.core:core-ktx:1.1.0'
+
+    // Coroutine
+    implementation deps.kotlin.coroutine
+
+    // App dependencies
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.constraintlayout
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.cardview
+    implementation deps.androidx.viewpager2
+
+    // Timber
+    implementation deps.logger.timber
+
+    // design
+    implementation deps.design.material
+
+    // Architecture Components
+    implementation deps.arch.extensions
+    implementation deps.arch.viewmodel
+    kapt deps.arch.compiler
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // Retrofit 2
+    implementation deps.network.retrofit
+    implementation deps.network.retrofitgson
+    implementation deps.network.retrofitrx
+    implementation deps.network.okhttplogger
+
+    // Glide
+    implementation deps.imageLib.glide
+
+    // Databinding compiler
+    kapt deps.binding.databinding
+
+    // Rx Plugins
+    implementation deps.rx.permissions
+
+    // Dagger 2
+    implementation deps.dagger.dagger
+    implementation deps.dagger.daggerSupport
+    kapt deps.dagger.daggerCompiler
+    kapt deps.dagger.daggerProcessor
+
+    //Phone
+    implementation deps.playservicesauth.playservicesauth
+    implementation deps.playservicesauth.playservicesauthapiphone
+
+    //Firebase
+    implementation deps.firebase.auth
+    implementation deps.firebase.analytics
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+}
+def getBaseUrl() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    String baseUrl = properties.getProperty("base_url")
+    if(baseUrl==null)
+        throw new GradleException("Add 'base_url' field at local.properties file. For more details: https://github.com/hasancse91/weather-app-android-mvvm-dagger/blob/master/README.md")
+
+    return baseUrl
+}
+
+def getAppId() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    String appId = properties.getProperty("app_id")
+    if(appId==null)
+        throw new GradleException("Add 'app_id' field at local.properties file. For more details: https://github.com/hasancse91/weather-app-android-mvvm-dagger/blob/master/README.md")
+
+    return appId
+}
